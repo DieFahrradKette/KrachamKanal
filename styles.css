@@ -98,7 +98,7 @@
     color: rgb(255, 255, 0);
     right: auto;
     left: 10%;
-    top: 20%;
+    top: 25%;
     bottom: auto;
     font-size: 100%;
     transform: rotate(-20deg);
@@ -113,6 +113,16 @@
   @-webkit-keyframes subtitle {
     0% {transform: scale(0.875) rotate(-20deg);}
     100% {transform: scale(1) rotate(-20deg);}
+  }
+  @media (max-width: 600px) {
+    .subtitle {
+      top: 200px;         /* weniger Abstand von oben */
+      left: 5%;        /* weiter nach links */
+      font-size: 80%;  /* kleinere Schrift */
+      width: 90%;      /* mehr Platz nutzen */
+      text-align: center;
+      z-index: 1;      /* optional, falls andere Elemente drüber liegen sollen */
+    }
   }
   .logo {
     position: absolute;
