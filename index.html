@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://fonts.cdnfonts.com/css/minecraft-3" rel="stylesheet">
+  <title>Krach am Kanal</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <img src="media/kaktransp.png" alt="logo" class="logo">
+    <h1 class="h1title">Krach am Kanal<div class="subtitle">Krank am Kabel</div></h1>
+    <nav>
+        <ul class="menu">
+          <!-- <li><a href="#start">Start</a></li> -->
+          <li><a href="#ueber-uns">Über uns</a></li>
+          <li><a href="#gallery-1446">Gallerie</a></li>
+          <li><a href="#kontakt">Kontakt</a></li>
+        </ul>
+      </nav>    
+  </header>
+
+  <main>
+    <svg id="fluss-svg"
+     width="150"
+     height="100%"
+     viewBox="0 0 200 1000"
+     preserveAspectRatio="none"
+     xmlns="http://www.w3.org/2000/svg"
+     style="position: fixed; top: 0; right: 0; height: 100vh; z-index: -1;">
+
+  <defs>
+    <!-- Wellen als Symbol -->
+    <symbol id="wellen">
+      <path d="M 0 30 Q 15 20 30 30 T 60 30"
+      fill="none"
+      stroke="rgba(107,75,47,0.4)"
+      stroke-width="4"/>
+    </symbol>
+
+    <!-- Muster mit doppelt gestapelten Wellen -->
+    <pattern id="wasser-pattern" patternUnits="userSpaceOnUse" width="60" height="60">
+      <g>
+        <use href="#wellen" y="0"/>
+        <use href="#wellen" y="60"/>
+      </g>
+    </pattern>
+
+    <!-- Maske für den Flussverlauf -->
+    <mask id="fluss-mask">
+      <path d="M100,0 
+               C120,100 80,200 100,300 
+               C120,400 80,500 100,600 
+               C120,700 80,800 100,1000"
+            stroke="white"
+            stroke-width="120"
+            fill="none"
+            stroke-linecap="round"
+            stroke-linejoin="round"/>
+    </mask>
+  </defs>
+
+  <!-- Fluss-Hintergrundfarbe -->
+  <rect width="200" height="1000" fill="#3a2614" mask="url(#fluss-mask)" />
+
+  <!-- Animiertes Wasser -->
+  <g>
+    <rect id="wasserbewegung" width="200" height="1000"
+          fill="url(#wasser-pattern)"
+          mask="url(#fluss-mask)">
+      <animateTransform attributeName="transform"
+                        type="translate"
+                        from="0,0"
+                        to="0,60"
+                        dur="2s"
+                        repeatCount="indefinite" />
+    </rect>
+  </g>
+
+</svg>
+<div id="muell-container"></div>
+    <section id="start" class="content">
+        <h2>Krach am Kanal (KaK)</h2>
+        <p>Krach am Kanal ist ein Format von Studierenden der Universität für angewandte Kunst und Soundbegeisterten, die einen Raum für Soundarbeiten, Noise, Krach, Jamming, Improvisation, Dj’s, Musik und Geräusche jeglicher Art gesucht haben. Da hörbasierte Arbeiten häufig wenig Platz/Gehör bekommen, wollen wir eine Plattform für diese Kunst schaffen und sie im öffentlichen Raum zeigen. Dafür versammeln wir uns einmal im Monat am Donaukanal und legen auf, performen live oder spielen Musik – das Wichtigste dabei: Gehört werden!</p>
+      </section>
+      <section id="open-call" style="padding: 2rem; max-width: 800px; margin: auto;">
+        <h2 style="font-size: 2rem; text-align: center;">Open Call 20.08.25 :</h2>
+        <p style="text-align: center; margin-bottom: 1.5rem;">
+          Du machst Musik, Sound Art oder legst auf? Mach nächste mal mit und fülle das folgende Formular aus:
+        </p>
+      
+        <iframe 
+          data-tally-src="https://tally.so/embed/31oJlb?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" 
+          loading="lazy" 
+          width="100%" 
+          height="500" 
+          frameborder="0" 
+          marginheight="0" 
+          marginwidth="0" 
+          title="Open Call Formular">
+        </iframe>
+      
+        <script>
+          var d = document, s = d.createElement("script");
+          s.src = "https://tally.so/widgets/embed.js";
+          s.onload = function() { Tally.loadEmbeds(); };
+          d.body.appendChild(s);
+        </script>
+      </section>
+      <p style="font-size: 0.9rem; text-align: center; margin-top: 1rem; color: #666;">
+        Hinweis: Dieses Formular wird über <a href="https://tally.so" target="_blank">Tally.so</a> bereitgestellt. Deine Daten werden dort DSGVO-konform verarbeitet.
+      </p>
+      
+      <section id="ueber-uns" class="content" style="margin-top: 100px;">
+        <h2>Über uns</h2>
+        <p>wir sind kak, wir machen Bass und haben kein platz für Hass. Krank am Kabel halt! Conni Vali Julius Kim Edo Clemens und viele viele mehr, wir freuen uns wenn ihr das nächste mal dabei seid, nur beim zuhören oder auch gerne Aktiv mit deinen Sounds, schreib uns einfach bei Instagram (Krachamkanal) jupiiiii</p>
+        <section id="gallery-1446">
+          <div class="cs-container">
+              <div class="cs-content">
+                  <div class="cs-flex">
+                      <h2 class="cs-title">hier ein paar Fotos :)</h2>
+                  </div>
+              </div>
+          <div class="cs-gallery">
+            <!--Picture 1-->
+            <picture class="cs-image">
+                <img loading="lazy" decoding="async" src="gallerie/1.JPG" alt="gallery" width="305" height="400">
+            </picture>
+            <!--Picture 2-->
+            <picture class="cs-image">
+                <img loading="lazy" decoding="async" src="gallerie/2.JPG" alt="gallery" width="305" height="400">
+            </picture>
+            <!--Picture 3-->
+            <picture class="cs-image">
+                <img loading="lazy" decoding="async" src="gallerie/3.JPG" alt="gallery" width="305" height="400">
+            </picture>
+            <!--Picture 4-->
+            <picture class="cs-image">
+                <img loading="lazy" decoding="async" src="gallerie/4.JPG" alt="gallery" width="305" height="400">
+            </picture>
+            <!--Picture 5-->
+            <picture class="cs-image">
+                <img loading="lazy" decoding="async" src="gallerie/5.JPG" alt="gallery" width="305" height="400">
+            </picture>
+            <!--Picture 6-->
+            <picture class="cs-image">
+                <img loading="lazy" decoding="async" src="gallerie/6.JPG" alt="gallery" width="305" height="400">
+            </picture>
+        </div>
+        </section>
+        <section id="kontakt" class="content" style="margin-top: 100px;">
+            <h2>Kontakt</h2>
+            <p>Du kannst uns über Instagram erreichen, schreib uns einfach eine DM :)</p>
+            <div class="bild">
+                <a href="https://www.instagram.com/krachamkanal/" target="_blank">
+                  <img src="media/krachamkanal_qr.png" alt="Bild 1">
+                </a>
+              </div>
+              <div class="iframely-embed"><div class="iframely-responsive" style="height: 140px; padding-bottom: 0;"><a href="https://t.me/krachamkanal" data-iframely-url="//iframely.net/av2D5IuF"></a></div></div><script async src="//iframely.net/embed.js"></script>
+          </section>
+          <img id="musicToggle" src="media/sound-icon.png" alt="Musik-Icon" class="hithere"/>
+          <audio id="bgMusic" src="media/Musik.mp3" loop></audio>
+        </main>
+      </section>
+  </main>
+  <footer>
+    <p>&copy; 2025 KaK</p>
+  </footer>
+  <script src="scripts/musicScript.js"></script>
+  <script src="scripts/kanalScript.js"></script>
+</body>
+</html>

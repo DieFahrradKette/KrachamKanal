@@ -1,0 +1,249 @@
+
+/* Grundlegendes Reset */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    color: white;
+    line-height: 1.6;
+    padding: 20px;
+    background-color: black;
+    /*background-color: #303049;
+    opacity: 1;
+    background-image:  linear-gradient(30deg, #99ae52 12%, transparent 12.5%, transparent 87%, #99ae52 87.5%, #99ae52), linear-gradient(150deg, #99ae52 12%, transparent 12.5%, transparent 87%, #99ae52 87.5%, #99ae52), linear-gradient(30deg, #99ae52 12%, transparent 12.5%, transparent 87%, #99ae52 87.5%, #99ae52), linear-gradient(150deg, #99ae52 12%, transparent 12.5%, transparent 87%, #99ae52 87.5%, #99ae52), linear-gradient(60deg, #99ae5277 25%, transparent 25.5%, transparent 75%, #99ae5277 75%, #99ae5277), linear-gradient(60deg, #99ae5277 25%, transparent 25.5%, transparent 75%, #99ae5277 75%, #99ae5277);
+    background-size: 80px 140px;
+    background-position: 0 0, 0 0, 40px 70px, 40px 70px, 0 0, 40px 70px;*/
+  }
+  
+  /* Layout */
+  header, footer {
+    background: #33333300;
+    color: white;
+    padding: 1em;
+    text-align: center;
+  }
+  
+  nav ul.menu {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    list-style: none;
+    flex-wrap: wrap;
+  }
+  
+  nav ul.menu li a {
+    color: white;
+    text-decoration: none;
+  }
+  
+  main .content {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 10px;
+  }
+  
+  /* Responsive: für kleinere Bildschirme */
+  @media (max-width: 600px) {
+    nav ul.menu {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    main .content {
+      padding: 10px;
+    }
+  }
+
+  .galerie {
+    margin-top: 40px;
+    text-align: center;
+  }
+  
+  .galerie h2 {
+    margin-bottom: 20px;
+    font-size: 1.5em;
+  }
+  
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+    padding: 10px;
+  }
+  
+  .bild {
+    overflow: hidden;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+  }
+  
+  .bild img {
+    width: 50%;
+    height: auto;
+    display: block;
+    transition: transform 0.4s ease;
+    border-radius: 10px;
+  }
+  
+  .bild:hover img {
+    transform: scale(1.05);
+  }
+
+  .subtitle {
+    position: absolute;
+    color: rgb(255, 255, 0);
+    right: auto;
+    left: 10%;
+    top: 20%;
+    bottom: auto;
+    font-size: 100%;
+    transform: rotate(-20deg);
+    width: 65%;
+    animation: subtitle .25s;
+    animation-direction: alternate;
+    animation-iteration-count: infinite;
+    text-align: right;
+    font-family: 'Minecraft', sans-serif;
+  }
+
+  @-webkit-keyframes subtitle {
+    0% {transform: scale(0.875) rotate(-20deg);}
+    100% {transform: scale(1) rotate(-20deg);}
+  }
+  .logo {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    max-height: 120px; /* größere Höhe für Desktop */
+    width: auto;
+    z-index: -1;
+  }
+
+  .h1title {
+    z-index: 1;
+    text-shadow: rgb(0, 0, 0) 0 -2px;
+  }
+
+  /* Mobile - 360px */
+@media only screen and (min-width: 0rem) {
+  #gallery-1446 {
+      padding: var(--sectionPadding);
+  }
+  #gallery-1446 .cs-container {
+      width: 100%;
+      max-width: 80rem;
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      /* 48px - 64px */
+      gap: clamp(3rem, 6vw, 4rem);
+      position: relative;
+  }
+  #gallery-1446 .cs-content {
+      text-align: left;
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 1.5rem;
+  }
+  #gallery-1446 .cs-title {
+      margin-top: 100px;
+  }
+  #gallery-1446 .cs-gallery {
+      width: 100%;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(19.0625rem, 1fr));
+      /* 16px - 20px */
+      gap: clamp(1rem, 1.5vw, 1.25rem);
+      position: relative;
+  }
+  #gallery-1446 .cs-image {
+      /* 260px - 360px */
+      min-height: clamp(16.25rem, 60vw, 20rem);
+      border-radius: 1rem;
+      /* clips the image corners */
+      overflow: hidden;
+      display: block;
+      position: relative;
+  }
+  #gallery-1446 .cs-image img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      /* makes it act like a background image */
+      object-fit: cover;
+  }
+}
+#musicToggle {
+  width: 100px; /* größer machen */
+  height: auto;
+  position: fixed;         /* an fester Stelle */
+  bottom: 20px;            /* Abstand vom unteren Rand */
+  right: 20px;             /* Abstand vom rechten Rand */
+  cursor: pointer;
+  opacity: 0.5;            /* Anfangszustand: blass */
+  transition: opacity 0.3s;
+  z-index: 1000;           /* liegt über anderem Inhalt */
+}
+
+#musicToggle.playing {
+  opacity: 1;
+}
+
+  /* radio animation */
+  .hithere {
+    animation: hithere 2s ease ;
+    animation-delay: 3s;
+  }
+  @keyframes hithere {
+    30% { transform: scale(1.2); }
+    40%, 60% { transform: rotate(-20deg) scale(1.2); }
+    50% { transform: rotate(20deg) scale(1.2); }
+    70% { transform: rotate(0deg) scale(1.2); }
+    100% { transform: scale(1); }
+  }
+  #muell-container {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 150px;      /* exakt Breite des SVG-Flusses */
+    height: 100vh;
+    pointer-events: none;
+    overflow: hidden;
+        /* über dem SVG */
+  }
+  
+  .muell {
+    position: absolute;
+    top: -30px;
+    animation: treiben 12s linear forwards, wackeln 1.5s ease-in-out infinite;
+    pointer-events: auto; /* damit Klicks funktionieren */
+    cursor: pointer;
+  }
+  
+  @keyframes treiben {
+    to {
+      top: 100vh;
+    }
+  }
+  
+  @keyframes wackeln {
+    0%, 100% { transform: translateX(0); }
+    50% { transform: translateX(5px); }
+  }
+  
+
+  
+  
+  
