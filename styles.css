@@ -56,6 +56,9 @@
     main .content {
       padding: 10px;
     }
+    .logo {
+      max-width: 70px;
+    }
   }
 
   .galerie {
