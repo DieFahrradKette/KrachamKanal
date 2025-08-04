@@ -121,7 +121,7 @@
     .subtitle {
       top: 200px;         /* weniger Abstand von oben */
       left: 5%;        /* weiter nach links */
-      font-size: 80%;  /* kleinere Schrift */
+      font-size: 70%;  /* kleinere Schrift */
       width: 90%;      /* mehr Platz nutzen */
       text-align: center;
       z-index: 1;      /* optional, falls andere Elemente drüber liegen sollen */
