@@ -14,9 +14,9 @@ function erstelleMuell() {
   span.style.fontSize = `${größe}px`;
 
   // Klickfunktion (z. B. später für Links)
-  span.onclick = () => {
-    alert(`Du hast ${span.textContent} angeklickt!`);
-  };
+  //span.onclick = () => {
+   // alert(`Du hast ${span.textContent} angeklickt!`);
+  //};
 
   container.appendChild(span);
 

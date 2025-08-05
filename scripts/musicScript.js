@@ -1,4 +1,3 @@
-  // RAdioMusik 
   const musicToggle = document.getElementById("musicToggle");
   const bgMusic = document.getElementById("bgMusic");
   
