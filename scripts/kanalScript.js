@@ -1,28 +1,48 @@
-const emojis = ["💩", "🔩", "🦆", "📺", "💰", "🪼"];
+const koepfe = [
+  "heads/kim.png",
+  "heads/clemens.png",
+  "heads/conni.png",
+  "heads/vali.png",
+  "heads/edo.png",
+  "heads/julius.png"
+];
 const container = document.getElementById("muell-container");
 
-function erstelleMuell() {
-  const span = document.createElement("span");
-  span.textContent = emojis[Math.floor(Math.random() * emojis.length)];
-  span.className = "muell";
+let letztePositionen = [];
 
-  const x = 20 + Math.random() * 30; // innerhalb der Flussbreite (0–100%)
-  span.style.left = `${x}%`;
-  const größe = 24 + Math.random() * 16; // verschiedene Größen
+function erstelleKopf() {
+  const img = document.createElement("img");
+  img.src = koepfe[Math.floor(Math.random() * koepfe.length)];
+  img.className = "muell";
 
-  span.style.left = `${x}%`;
-  span.style.fontSize = `${größe}px`;
+  const größe = 30 + Math.random() * 20;
 
-  // Klickfunktion (z. B. später für Links)
-  //span.onclick = () => {
-   // alert(`Du hast ${span.textContent} angeklickt!`);
-  //};
+  // Zufällige Position mit Mindestabstand
+  let x;
+  let versuche = 0;
+  const mindestabstand = 10; // in Prozentpunkten
 
-  container.appendChild(span);
+  do {
+    x = 20 + Math.random() * 30;
+    versuche++;
+  } while (
+    letztePositionen.some(px => Math.abs(px - x) < mindestabstand) &&
+    versuche < 10
+  );
 
-  // Entferne das Element nach 15 Sekunden
-  setTimeout(() => container.removeChild(span), 15000);
+  // Position merken (max. 5 merken)
+  letztePositionen.push(x);
+  if (letztePositionen.length > 5) {
+    letztePositionen.shift();
+  }
+
+  img.style.left = `${x}%`;
+  img.style.width = `${größe}px`;
+  img.style.height = "auto";
+
+  container.appendChild(img);
+
+  setTimeout(() => container.removeChild(img), 15000);
 }
 
-// Alle 1–2 Sekunden neuen Müll erzeugen
-setInterval(erstelleMuell, 7200);
+setInterval(erstelleKopf, 7200);
