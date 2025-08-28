@@ -2,7 +2,8 @@
     "Krank am Kabel",
     "Voll verkabelt",
     "Wahnsinn",
-    "Krach vom Fach"
+    "Krach vom Fach",
+    "Knall am Kanal"
   ];
 
   // random
