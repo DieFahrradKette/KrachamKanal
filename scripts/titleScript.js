@@ -4,7 +4,8 @@
     "Wahnsinn",
     "Krach vom Fach",
     "Knall am Kanal",
-    "Krank am knutschen"
+    "Krank am knutschen",
+    "Krass am Kritisierten"
   ];
 
   // random
