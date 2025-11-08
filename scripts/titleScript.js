@@ -8,7 +8,8 @@
     "Krass am Kritisierten",
     "Krass am kultivieren",
     "Krank am Kochen",
-    "Krank am Kassieren"
+    "Krank am Kassieren",
+    "Klassenkampf am Kanal"
   ];
 
   // random
