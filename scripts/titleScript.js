@@ -9,7 +9,8 @@
     "Krass am kultivieren",
     "Krank am Kochen",
     "Krank am Kassieren",
-    "Klassenkampf am Kanal"
+    "Klassenkampf am Kanal",
+    "KaK auf Kickl"
   ];
 
   // random
