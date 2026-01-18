@@ -47,9 +47,6 @@
     <h1 class="h1title">Krach am Kanal<div class="subtitle">Krank am Kabel</div></h1>
     <nav>
         <ul class="menu">
-          <!-- <li><a href="#start">Start</a></li> -->
-          <!--<li><a href="#ueber-uns">Über uns</a></li> -->
-          <li><a href="#gallery-1446">Galerie</a></li>
           <li><a href="#kontakt">Kontakt</a></li>
           <li><a href="#impressum">Impressum</a></li>
         </ul>
@@ -63,7 +60,7 @@
      viewBox="0 0 200 1000"
      preserveAspectRatio="none"
      xmlns="http://www.w3.org/2000/svg"
-     style="position: fixed; top: 0; right: 0; height: 100vh; z-index: -1;">
+     style="position: fixed; top: 0; right: 0; height: 100vh; z-index: -2;">
 
   <defs>
     <!-- Wellen als Symbol -->
@@ -154,47 +151,28 @@
         <h2>Über uns</h2>
         <p>wir sind KaK! euer Krach vom Fach! Conni, Vali, Julius, Kim, Edo, Clemens und viele weitere helfende hände bringen gerne noise an den donaukanal - wir freuen uns wenn ihr das nächste mal dabei seid juhu! 
         </p>
-        <div style="width: 90%; margin-top: 50px;">
-          <iframe width="100%" height="450" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/2071780155&color=%23ff5500&auto_play=true&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe><div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/krachamkanal" title="KrachamKanal" target="_blank" style="color: #cccccc; text-decoration: none;">KrachamKanal</a> · <a href="https://soundcloud.com/krachamkanal/sets/krach-am-kanal-20-08-2025" title="Krach Am Kanal 20.08.2025" target="_blank" style="color: #cccccc; text-decoration: none;">Krach Am Kanal 20.08.2025</a></div>
-          </div>
-        <section id="gallery-1446">
-          <div class="cs-container">
-              <div class="cs-content">
-                  <div class="cs-flex">
-                      <h2 class="cs-title">hier ein paar Fotos :)</h2>
-                  </div>
-              </div>
-          <div class="cs-gallery">
-            <!--Picture 1-->
-            <picture class="cs-image">
-                <img loading="lazy" decoding="async" src="gallerie/1.JPG" alt="gallery" width="305" height="400">
-            </picture>
-            <!--Picture 2-->
-            <picture class="cs-image">
-                <img loading="lazy" decoding="async" src="gallerie/2.JPG" alt="gallery" width="305" height="400">
-            </picture>
-            <!--Picture 3-->
-            <picture class="cs-image">
-                <img loading="lazy" decoding="async" src="gallerie/3.JPG" alt="gallery" width="305" height="400">
-            </picture>
-            <!--Picture 4-->
-            <picture class="cs-image">
-                <img loading="lazy" decoding="async" src="gallerie/4.JPG" alt="gallery" width="305" height="400">
-            </picture>
-            <!--Picture 5-->
-            <picture class="cs-image">
-                <img loading="lazy" decoding="async" src="gallerie/5.JPG" alt="gallery" width="305" height="400">
-            </picture>
-            <!--Picture 6-->
-            <picture class="cs-image">
-                <img loading="lazy" decoding="async" src="gallerie/6.JPG" alt="gallery" width="305" height="400">
-            </picture>
-        </div>
-        </section>
+        
+        
+
+        <br>
+
+        <h2>Vergangene Events:</h2>
+        <div class="events-grid" id="events"></div>
+<div class="gallery-modal" id="galleryModal">
+  <button class="close-btn">×</button>
+  <img id="galleryImage">
+  <div class="gallery-nav">
+    <button id="prevImg">‹</button>
+    <button id="nextImg">›</button>
+  </div>
+</div>
+
 
         <section id="kontakt" class="content" style="margin-top: 100px;">
             <h2>Kontakt</h2>
-            <p>Du kannst uns bei Fragen über Instagram erreichen, oder für updates unserem Telegram channel folgen</p>
+            <p>Schreib uns bei Fragen doch einfach eine E-Mail, unter: krachamkanal@aol.com</p>
+            <br>
+            <p>Wir haben einen Telegram Channel für Updates und auf Instagram sind wir auch:</p>
             <div class="bild">
                 <a href="https://www.instagram.com/krachamkanal/" target="_blank">
                   <img src="media/krachamkanal_qr.png" alt="Bild 1">
@@ -222,5 +200,6 @@
   <script src="scripts/musicScript.js"></script>
   <script src="scripts/kanalScript.js"></script>
   <script src="scripts/titleScript.js"></script>
+  <script src="scripts/gallery.js"></script>
 </body>
 </html>
