@@ -9,6 +9,11 @@ const events = [
       title: "centralgarden 11/26",
       folder: "events/centralgarden11",
       count: 1
+    },
+    {
+      title: "seestadt10/26",
+      folder: "events/seestadt",
+      count: 1
     }
   ];
   
