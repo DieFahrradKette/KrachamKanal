@@ -165,12 +165,14 @@
     position: fixed;
     top: 0;
     right: 0;
-    width: 150px;      /* exakt Breite des SVG-Flusses */
+    width: 150px;
     height: 100vh;
-    pointer-events: none;
     overflow: hidden;
-        /* über dem SVG */
+    pointer-events: none;
+  
+    z-index: -1; /* WICHTIG */
   }
+  
   
   .muell {
     position: absolute;
