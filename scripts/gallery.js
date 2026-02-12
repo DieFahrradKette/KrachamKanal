@@ -3,7 +3,7 @@ const events = [
     {
       title: "wienstation 01/26",
       folder: "events/wienstation01",
-      count: 2
+      count: 6
     },
     {
       title: "centralgarden 11/26",
