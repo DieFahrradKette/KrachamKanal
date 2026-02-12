@@ -161,18 +161,18 @@
     100%  { transform: scaleX(-1) scale(1); }
   }
   
-  #muell-container {
-    position: fixed;
-    top: 0;
-    right: 0;
-    width: 150px;
-    height: 100vh;
-    overflow: hidden;
-    pointer-events: none;
-  
-    z-index: -1; /* WICHTIG */
-  }
-  
+#muell-container {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 150px;
+  height: 100vh;
+  overflow: hidden;
+  pointer-events: none;
+
+  z-index: -1; /* WICHTIG */
+}
+
   
   .muell {
     position: absolute;
