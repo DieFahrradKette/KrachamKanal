@@ -5,7 +5,7 @@
     "Krach vom Fach",
     "Knall am Kanal",
     "Krank am knutschen",
-    "Krass am Kritisierten",
+    "Krass am Kritisieren",
     "Krass am kultivieren",
     "Krank am Kochen",
     "Krank am Kassieren",
