@@ -50,8 +50,20 @@ const events = [
     modal.classList.add("open");
   }
   
+  const formats = ["jpg", "jpeg", "JPG", "png"];
+
   function updateImage() {
-    img.src = `${currentEvent.folder}/${currentIndex}.jpg`;
+    let basePath = `${currentEvent.folder}/${currentIndex}`;
+    
+    // versuche Formate durch
+    for (let format of formats) {
+      let testImg = new Image();
+      testImg.src = `${basePath}.${format}`;
+      
+      testImg.onload = () => {
+        img.src = testImg.src;
+      };
+    }
   }
   
   // === NAV ===
