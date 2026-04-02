@@ -18,7 +18,7 @@ const events = [
     {
       title: "celeste 03/26",
       folder: "events/celeste",
-      count: 1
+      count: 10
     }
   ];
   
