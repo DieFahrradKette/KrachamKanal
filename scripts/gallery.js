@@ -19,6 +19,11 @@ const events = [
       title: "celeste 03/26",
       folder: "events/celeste",
       count: 10
+    },
+    {
+      title: "rhiz",
+      folder: "events/rhiz",
+      count: 6
     }
   ];
   
