@@ -6,8 +6,120 @@
   <link href="https://fonts.cdnfonts.com/css/minecraft-3" rel="stylesheet">
   <title>Krach am Kanal</title>
   <link rel="stylesheet" href="styles.css" />
+
+  <!-- Sprachauswahl: Styles -->
+  <style>
+    body.lang-locked { overflow: hidden; }
+
+    #lang-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 10000;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+      padding: 1.5rem;
+      background: #3a2614;
+      color: #f3e7d6;
+      font-family: inherit;
+      text-align: center;
+      transition: opacity 0.35s ease, visibility 0.35s ease;
+    }
+    #lang-overlay.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+
+    #lang-overlay .lang-title { font-size: 1.4rem; margin: 0; line-height: 1.4; }
+    #lang-overlay .lang-options { display: flex; gap: 1.5rem; flex-wrap: wrap; justify-content: center; }
+
+    .lang-btn {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.75rem;
+      min-width: 150px;
+      padding: 1.1rem 1.4rem;
+      background: transparent;
+      color: inherit;
+      font: inherit;
+      border: 3px solid #6b4b2f;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: border-color 0.15s ease, background 0.15s ease;
+    }
+    .lang-btn:hover, .lang-btn:focus-visible { border-color: #f3e7d6; background: rgba(243, 231, 214, 0.08); outline: none; }
+    .lang-btn svg { width: 96px; height: 48px; display: block; box-shadow: 0 0 0 2px rgba(0,0,0,0.35); }
+
+    /* kleiner Umschalter, damit man die Sprache später wechseln kann */
+    #lang-switch {
+      position: fixed;
+      right: 12px;
+      bottom: 12px;
+      z-index: 9000;
+      display: flex;
+      gap: 6px;
+    }
+    #lang-switch button {
+      padding: 4px;
+      background: rgba(58, 38, 20, 0.85);
+      border: 2px solid transparent;
+      border-radius: 4px;
+      cursor: pointer;
+      line-height: 0;
+    }
+    #lang-switch button svg { width: 33px; height: 22px; display: block; }
+    #lang-switch button[aria-pressed="true"] { border-color: #f3e7d6; }
+    #lang-switch button:focus-visible { outline: 2px solid #f3e7d6; outline-offset: 2px; }
+
+    @media (prefers-reduced-motion: reduce) {
+      #lang-overlay { transition: none; }
+    }
+  </style>
 </head>
-<body>
+<body class="lang-locked">
+
+  <!-- Flaggen (einmal definiert, mehrfach verwendet) -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <defs>
+      <symbol id="flag-at" viewBox="0 0 60 30" preserveAspectRatio="none">
+        <rect width="60" height="30" fill="#ED2939"/>
+        <rect y="10" width="60" height="10" fill="#ffffff"/>
+      </symbol>
+      <symbol id="flag-gb" viewBox="0 0 60 30" preserveAspectRatio="none">
+        <clipPath id="gb-s"><path d="M0,0 v30 h60 v-30 z"/></clipPath>
+        <clipPath id="gb-t"><path d="M30,15 h30 v15 z v15 h-30 z h-30 v-15 z v-15 h30 z"/></clipPath>
+        <g clip-path="url(#gb-s)">
+          <path d="M0,0 v30 h60 v-30 z" fill="#012169"/>
+          <path d="M0,0 L60,30 M60,0 L0,30" stroke="#ffffff" stroke-width="6"/>
+          <path d="M0,0 L60,30 M60,0 L0,30" clip-path="url(#gb-t)" stroke="#C8102E" stroke-width="4"/>
+          <path d="M30,0 v30 M0,15 h60" stroke="#ffffff" stroke-width="10"/>
+          <path d="M30,0 v30 M0,15 h60" stroke="#C8102E" stroke-width="6"/>
+        </g>
+      </symbol>
+    </defs>
+  </svg>
+
+  <!-- Sprachauswahl beim Laden -->
+  <div id="lang-overlay" role="dialog" aria-modal="true" aria-labelledby="lang-title">
+    <p class="lang-title" id="lang-title">Sprache wählen<br>Choose language</p>
+    <div class="lang-options">
+      <button type="button" class="lang-btn" data-lang="de" aria-label="Deutsch">
+        <svg viewBox="0 0 60 30" aria-hidden="true"><use href="#flag-at"/></svg>
+        <span>Deutsch</span>
+      </button>
+      <button type="button" class="lang-btn" data-lang="en" aria-label="English">
+        <svg viewBox="0 0 60 30" aria-hidden="true"><use href="#flag-gb"/></svg>
+        <span>English</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Kleiner Umschalter (erscheint nach der Auswahl) -->
+  <div id="lang-switch" hidden>
+    <button type="button" data-lang="de" aria-label="Deutsch" aria-pressed="true"><svg viewBox="0 0 60 30" aria-hidden="true"><use href="#flag-at"/></svg></button>
+    <button type="button" data-lang="en" aria-label="English" aria-pressed="false"><svg viewBox="0 0 60 30" aria-hidden="true"><use href="#flag-gb"/></svg></button>
+  </div>
+
 <!--
   <div class="snowflakes" aria-hidden="true">
   <div class="snowflake">🐝</div>
@@ -28,8 +140,8 @@
     <h1 class="h1title">Krach am Kanal<div class="subtitle">Krank am Kabel</div></h1>
     <nav>
         <ul class="menu">
-          <li><a href="#gallery">Galerie</a></li>
-          <li><a href="#impressum">Impressum</a></li>
+          <li><a href="#gallery" data-en="Gallery">Galerie</a></li>
+          <li><a href="#impressum" data-en="Legal notice">Impressum</a></li>
         </ul>
       </nav>    
   </header>
@@ -111,18 +223,18 @@
       -->
       </div>
         <h2>Krach am Kanal (KaK)</h2>
-        <p>Krach am Kanal ist ein Format von Soundbegeisterten, die einen Raum für Soundarbeiten, Noise, Krach, Jamming, Improvisation, Dj’s, Musik und Geräusche jeglicher Art gesucht haben. Da hörbasierte Arbeiten häufig wenig Platz/Gehör bekommen, wollen wir eine Plattform für diese Kunst schaffen und sie im öffentlichen Raum zeigen. Dafür versammeln wir uns einmal im Monat – unter anderem am Donaukanal – und legen auf, performen live oder spielen Musik. Das Wichtigste dabei: gehört werden!</p>
+        <p data-en="Krach am Kanal is a format by sound enthusiasts who were looking for a space for sound works, noise, jamming, improvisation, DJs, music and sounds of every kind. Because listening-based works often get little room and few ears, we want to create a platform for this art and show it in public space. To do that, we get together once a month – among other places at the Danube Canal – and DJ, perform live or play music. The most important thing: to be heard!">Krach am Kanal ist ein Format von Soundbegeisterten, die einen Raum für Soundarbeiten, Noise, Krach, Jamming, Improvisation, Dj’s, Musik und Geräusche jeglicher Art gesucht haben. Da hörbasierte Arbeiten häufig wenig Platz/Gehör bekommen, wollen wir eine Plattform für diese Kunst schaffen und sie im öffentlichen Raum zeigen. Dafür versammeln wir uns einmal im Monat – unter anderem am Donaukanal – und legen auf, performen live oder spielen Musik. Das Wichtigste dabei: gehört werden!</p>
       </section>
       
        <!--
       <section id="open-call" style="padding: 2rem; max-width: 800px; margin: auto;">
         <h2 style="font-size: 2rem; text-align: center;">Open Call 10.10.2026</h2>
         <p style="text-align: left; margin-bottom: 1.5rem;">
-          Für den 10.10. suchen wir wieder Künstler*innen die mit uns gemeinsam im Spitzer Krach machen wollen! Live Sets, Dj Sets, Sound Art, all artists & genres are welcome!<br>
+          <span data-en="On October 10th we are once again looking for artists who want to make noise with us at the Spitzer! Live sets, DJ sets, sound art, all artists &amp; genres are welcome!">Für den 10.10. suchen wir wieder Künstler*innen die mit uns gemeinsam im Spitzer Krach machen wollen! Live Sets, Dj Sets, Sound Art, all artists &amp; genres are welcome!</span><br>
           <h2 style="font-size: 2rem; text-align: center;">💰</h2>
-          Wir sind Krach am Kanal - eine  Plattform für SoundArt, Noise und Musik jeglicher Art. Unser Ziel ist es, Künstler*innen einen Raum zum Experimentieren, Performen und Vernetzen zu geben. Uns ist es wichtig, zugänglich zu bleiben und unsere Plattform frei von Profit und Konsumzwang zu halten – deshalb können wir leider keine Gagen anbieten. Wir freuen uns, wenn ihr trotzdem mit uns Krach machen wollt! <br>
+          <span data-en="We are Krach am Kanal - a platform for sound art, noise and music of every kind. Our goal is to give artists a space to experiment, perform and network. It is important to us to stay accessible and to keep our platform free of profit and consumer pressure – that is why, unfortunately, we cannot offer any fees. We would be happy if you still want to make noise with us!">Wir sind Krach am Kanal - eine Plattform für SoundArt, Noise und Musik jeglicher Art. Unser Ziel ist es, Künstler*innen einen Raum zum Experimentieren, Performen und Vernetzen zu geben. Uns ist es wichtig, zugänglich zu bleiben und unsere Plattform frei von Profit und Konsumzwang zu halten – deshalb können wir leider keine Gagen anbieten. Wir freuen uns, wenn ihr trotzdem mit uns Krach machen wollt!</span> <br>
           <h2 style="font-size: 2rem; text-align: center;">📸</h2>
-          Es werden Video- und Tonaufnahmen von den Performances gemacht und hochgeladen (Instagram, Soundcloud, Webseite). Wenn du nicht damit einverstanden bist gib uns gerne einfach bescheid :).
+          <span data-en="Video and audio recordings of the performances will be made and uploaded (Instagram, SoundCloud, website). If you don't agree with this, just let us know :).">Es werden Video- und Tonaufnahmen von den Performances gemacht und hochgeladen (Instagram, Soundcloud, Webseite). Wenn du nicht damit einverstanden bist gib uns gerne einfach bescheid :).</span>
         </p>
         <br>
       
@@ -145,18 +257,18 @@
         </script>
       </section>
     
-      <p style="font-size: 0.9rem; text-align: center; margin-top: 1rem; color: #666;">
+      <p style="font-size: 0.9rem; text-align: center; margin-top: 1rem; color: #666;" data-en="Note: This form is provided via <a href='https://tally.so' target='_blank'>Tally.so</a>. Your data is processed there in compliance with the GDPR.">
         Hinweis: Dieses Formular wird über <a href="https://tally.so" target="_blank">Tally.so</a> bereitgestellt. Deine Daten werden dort DSGVO-konform verarbeitet.
       </p>
 -->
       
       <section id="ueber-uns" class="content" style="margin-top: 100px;">
-        <h2>Über uns</h2>
-        <p>wir sind KaK! euer Krach vom Fach! Conni, Vali, Julius, Kim, Edo, Clemens und viele weitere helfende hände bringen gerne noise an den donaukanal - wir freuen uns wenn ihr das nächste mal dabei seid juhu! 
+        <h2 data-en="About us">Über uns</h2>
+        <p data-en="we are KaK! your noise pros! Conni, Vali, Julius, Kim, Edo, Clemens and many other helping hands love bringing noise to the Danube Canal - we're happy if you join us next time, yay!">wir sind KaK! euer Krach vom Fach! Conni, Vali, Julius, Kim, Edo, Clemens und viele weitere helfende hände bringen gerne noise an den donaukanal - wir freuen uns wenn ihr das nächste mal dabei seid juhu! 
         </p>
         <br>
 <section id="gallery">
-        <h2>Vergangene Events:</h2>
+        <h2 data-en="Past events:">Vergangene Events:</h2>
         <div class="events-grid" id="events"></div>
 <div class="gallery-modal" id="galleryModal">
   <button class="close-btn">×</button>
@@ -170,26 +282,26 @@
 
 
         <section id="kontakt" class="content" style="margin-top: 100px;">
-            <h2>Kontakt</h2>
-            <p>Schreib uns bei Fragen doch einfach eine E-Mail, unter: krachamkanal@aol.com</p>
+            <h2 data-en="Contact">Kontakt</h2>
+            <p data-en="If you have any questions, just send us an email at: krachamkanal@aol.com">Schreib uns bei Fragen doch einfach eine E-Mail, unter: krachamkanal@aol.com</p>
             <br>
-            <p>Wir haben einen Telegram Channel für Updates und auf Instagram sind wir auch:</p>
+            <p data-en="We have a Telegram channel for updates, and we're on Instagram too:">Wir haben einen Telegram Channel für Updates und auf Instagram sind wir auch:</p>
             <div class="bild">
                 <a href="https://www.instagram.com/krachamkanal/" target="_blank">
-                  <img src="media/krachamkanal_qr.png" alt="Bild 1">
+                  <img src="media/krachamkanal_qr.png" alt="Bild 1" data-en-alt="Image 1">
                 </a>
               </div>
               <div class="iframely-embed"><div class="iframely-responsive" style="height: 140px; padding-bottom: 0;"><a href="https://t.me/krachamkanal" data-iframely-url="//iframely.net/av2D5IuF"></a></div></div><script async src="//iframely.net/embed.js"></script>
           </section>
-          <img id="musicToggle" src="media/sound-icon.png" alt="Musik-Icon" class="hithere"/>
+          <img id="musicToggle" src="media/sound-icon.png" alt="Musik-Icon" data-en-alt="Music icon" class="hithere"/>
           <audio id="bgMusic" src="media/Musik.mp3" loop></audio>
         </main>
       </section>
       <section id="impressum" style="margin-top: 100px;">
-      <h3>Impressum</h3>
+      <h3 data-en="Legal notice">Impressum</h3>
       <p>Julius G.
 
-        <p>Vordere Zollamtsstraße 7, 1030 Wien,
+        <p data-en="Vordere Zollamtsstraße 7, 1030 Vienna, Austria">Vordere Zollamtsstraße 7, 1030 Wien,
         Österreich</p>
         
         <p>Tel.: 004367762877036</p>
@@ -198,6 +310,55 @@
   <footer>
     <p>&copy; 2026 KaK</p>
   </footer>
+
+  <!-- Sprachumschaltung -->
+  <script>
+    (function () {
+      var overlay = document.getElementById('lang-overlay');
+      var switcher = document.getElementById('lang-switch');
+      var textNodes = document.querySelectorAll('[data-en]');
+      var altNodes = document.querySelectorAll('[data-en-alt]');
+
+      // Originaltexte (Deutsch) merken, damit man jederzeit zurückwechseln kann
+      textNodes.forEach(function (el) { el.setAttribute('data-de', el.innerHTML); });
+      altNodes.forEach(function (el) { el.setAttribute('data-de-alt', el.getAttribute('alt')); });
+
+      function setLang(lang) {
+        var en = lang === 'en';
+        textNodes.forEach(function (el) {
+          el.innerHTML = el.getAttribute(en ? 'data-en' : 'data-de');
+        });
+        altNodes.forEach(function (el) {
+          el.setAttribute('alt', el.getAttribute(en ? 'data-en-alt' : 'data-de-alt'));
+        });
+        document.documentElement.lang = en ? 'en' : 'de';
+        switcher.querySelectorAll('button').forEach(function (b) {
+          b.setAttribute('aria-pressed', String(b.getAttribute('data-lang') === lang));
+        });
+      }
+
+      function closeOverlay() {
+        overlay.classList.add('hidden');
+        document.body.classList.remove('lang-locked');
+        switcher.hidden = false;
+      }
+
+      overlay.querySelectorAll('.lang-btn').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          setLang(btn.getAttribute('data-lang'));
+          closeOverlay();
+        });
+      });
+
+      switcher.querySelectorAll('button').forEach(function (btn) {
+        btn.addEventListener('click', function () { setLang(btn.getAttribute('data-lang')); });
+      });
+
+      var firstBtn = overlay.querySelector('.lang-btn');
+      if (firstBtn) firstBtn.focus();
+    })();
+  </script>
+
   <script src="scripts/musicScript.js"></script>
   <script src="scripts/kanalScript.js"></script>
   <script src="scripts/titleScript.js"></script>
